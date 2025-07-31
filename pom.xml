@@ -64,4 +64,16 @@
       </plugins>
     </pluginManagement>
   </build>
+  <distributionManagement>
+<repository>
+<id>RepoR</id>
+<name>repoR</name>
+<url>http://44.211.248.20:8080/nexus/content/repositories/RepoR/</url>
+</repository>
+<snapshotRepository>
+<id>RepoS</id>
+<name>RepoS</name>
+<url>http://44.211.248.20:8080/nexus/content/repositories/RepoS/</url>
+</snapshotRepository>
+</distributionManagement>
 </project>
