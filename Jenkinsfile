@@ -26,12 +26,11 @@ pipeline {
 
     stage('Deploy to Tomcat') {
       steps {
-        sshagent(['tomcat-ssh-key']) {
+        //sshagent(['tomcat-ssh-key']) {
           sh """
           scp /var/lib/jenkins/workspace/app-deploy/target/*.war ubuntu@172.31.84.222:/home/ubuntu/tomcat8/webapps/
           """
         }
-      }
     }
   }
 }
