@@ -28,7 +28,7 @@ pipeline {
       steps {
         //sshagent(['tomcat-ssh-key']) {
           sh """
-          scp /var/lib/jenkins/workspace/maven-deploy/target/*.war ubuntu@172.31.89.126:/home/ubuntu/tomcat9/webapps/
+          scp /var/lib/jenkins/workspace/maven-deploy/target/*.war ubuntu@172.31.90.28:/home/ubuntu/tomcat9/webapps/
           """
         }
     }
