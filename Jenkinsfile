@@ -28,9 +28,10 @@ pipeline {
   steps {
     sshagent(['tomcat-key']) {
       sh '''
-        scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
-        /var/lib/jenkins/workspace/maven-deploy/target/idream-it-solutions.war \
-        ubuntu@172.31.89.126:/home/ubuntu/tomcat9/webapps/
+       scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
+-i /var/lib/jenkins/.ssh/key.pem \
+/var/lib/jenkins/workspace/maven-deploy/target/idream-it-solutions.war \
+ubuntu@172.31.89.126:/home/ubuntu/tomcat9/webapps/
       '''
     }
   }
