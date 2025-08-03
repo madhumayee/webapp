@@ -24,12 +24,16 @@ pipeline {
       }
     }
 
-   stage('Deploy to Tomcat') {
-  steps {
-    sh '''
-      scp /var/lib/jenkins/workspace/maven-deploy/target/idream-it-solutions.war ubuntu@172.31.90.28:/home/ubuntu/tomcat9/webapps/
-    '''
-  }
-}
+  stage('Deploy to Tomcat') {
+      steps {
+        sshagent(['tomcat-ssh-key']) {
+          sh '''
+            mkdir -p ~/.ssh
+            ssh-keyscan -H 172.31.84.17 >> ~/.ssh/known_hosts
+            scp target/*.war ubuntu@172.31.84.17:/home/ubuntu/tomcat9/webapps/
+          '''
+        }
+      }
+    }
   }
 }
